@@ -1,0 +1,1753 @@
+-- This file was generated at discord.gg/syncrypt
+
+local t1 = {}
+local unpack_ = unpack or table.unpack
+
+if not game:IsLoaded() then
+	game.Loaded:Wait()
+end
+
+local t2 = {
+	value1 = "https://fracture.wtf/api/v1",
+	value2 = "https://discord.gg/d4y5eMx5n5"
+}
+local value1 = t1.value1
+
+t2.value3 = "https://fracture.wtf/buy"
+
+local request_ = request
+
+if not request_ then
+	t1.value2 = t1.value1
+	t1.value5 = http_request
+	request_ = t1.value5
+
+	if not t1.value5 then
+		t1.value3 = t1.value1
+		t1.value4 = syn_request
+		t1.value5 = t1.value4
+
+		if not t1.value4 then
+			t1.value7 = http
+
+			local value12 = t1.value1
+			local value7 = t1.value7
+
+			t1.value6 = value12
+			t1.value4 = value7
+
+			if t1.value7 then
+				t1.value4 = http.request
+			end
+
+			local value6 = t1.value6
+			local value4 = t1.value4
+
+			t1.value1 = value6
+			t1.value5 = value4
+		end
+
+		request_ = t1.value5
+		t1.value1 = t1.value3
+	end
+
+	t1.value1 = t1.value2
+end
+
+t1.value1 = value1
+t1.value10 = 21355818788568
+t1.value6 = "n\149\220\252Ѻ\181 \237\222 "
+t1.value8 = 25237642063336
+t2.value4 = request_
+t2.value5 = game:GetService("HttpService")
+t1.value2 = game:GetService("Players")
+t1.value5 = "game"
+t1.value8 = "j\240\154^R&^\198\211x"
+t1.value11 = 4982196996368
+t1.value5 = game:GetService("RunService")
+t2.value6 = t1.value5
+t1.value5 = game
+t1.value3 = "GetService"
+t1.value9 = 573525377291
+t1.value3 = t1.value5:GetService("UserInputService")
+t2.value7 = t1.value3
+t1.value4 = game:GetService("CoreGui")
+t1.value6 = game:GetService("TweenService")
+t2.value8 = t1.value6
+t1.value7 = game:GetService("TextService")
+t2.value9 = t1.value7
+t1.value9 = t1.value1
+t1.value7 = t1.value2.LocalPlayer
+t2.value10 = t1.value7
+
+local getgenv_ = getgenv
+
+if getgenv_ then
+	getgenv_ = getgenv()
+end
+
+t1.value10 = getgenv_
+
+local value10 = t1.value10
+local value9 = t1.value9
+
+t1.value7 = value10
+t1.value1 = value9
+
+if not t1.value10 then
+	t1.value7 = _G
+end
+
+t2.value11 = t1.value7
+t1.value9 = not t2.value4 and "HTTP requests are unavailable on this executor."
+t2.value12 = t1.value9 or nil
+
+local function v13(p1)
+	if type(p1) == "function" then
+		local ok, result = pcall(p1)
+
+		if not ok or type(result) ~= "string" then
+			return
+		else
+			local match = result:match("^%s*(.-)%s*$")
+
+			if #match >= 10 then
+				return match
+			else
+				return
+			end
+		end
+	end
+end
+
+local v17 = v13(gethwid) or (v13(get_hwid) or v13(gethardwareid))
+
+if not v17 then
+	t2.value12 = "Could not read a device ID on this executor."
+end
+
+local FractureLoader = t2.value11.FractureLoader
+
+if FractureLoader then
+	FractureLoader = t2.value11.FractureLoader.Destroy
+end
+
+if FractureLoader then
+	pcall(function()
+		t2.value11.FractureLoader:Destroy()
+	end)
+end
+
+t2.value13 = "fracture/key.txt"
+
+local function v19()
+	local match = nil
+
+	local function v21()
+		local isfile_ = isfile
+
+		if isfile_ then
+			isfile_ = readfile
+
+			if isfile_ then
+				isfile_ = isfile(t2.value13)
+			end
+		end
+
+		if not isfile_ then
+			return
+		end
+
+		match = readfile(t2.value13):match("^%s*(.-)%s*$")
+
+		if not (#match < 6) then
+			return
+		end
+
+		match = nil
+	end
+
+	pcall(v21)
+
+	return match
+end
+
+function t2.value14(p2, p3)
+	local ok, result = pcall(function()
+		return t2.value4({
+			Url = t2.value1 .. p2,
+			Method = "POST",
+			Headers = {
+				["Content-Type"] = "application/json",
+				Accept = "application/json"
+			},
+			Body = t2.value5:JSONEncode(p3)
+		})
+	end)
+
+	if not (ok and result) then
+		return nil, 0
+	end
+
+	local function v25()
+		return t2.value5:JSONDecode(result.Body or "")
+	end
+
+	local ok2, result2 = pcall(v25)
+
+	return ok2 and result2 or nil, result.StatusCode or 0
+end
+
+t2.value15 = "Unknown"
+
+local task_ = task
+
+t1.value15 = 18506816119209
+t1.value16 = 19578124133276
+task_.spawn(function()
+	pcall(function()
+		local v29 = t2.value4({
+			Url = string.format("https://games.roblox.com/v1/games?universeIds=%d", game.GameId),
+			Method = "GET"
+		})
+		local v30
+
+		if v29 then
+			v30 = v29.StatusCode == 200
+		else
+			v30 = v29
+		end
+
+		if not v30 then
+			return
+		end
+
+		local data = t2.value5:JSONDecode(v29.Body)
+		local data2
+
+		if data then
+			data2 = data.data
+
+			if data2 then
+				data2 = data.data[1]
+			end
+		else
+			data2 = data
+		end
+
+		local v33
+
+		if data2 then
+			local name = data2.name
+
+			v33 = type(name) == "string"
+
+			if v33 then
+				v33 = data2.name ~= ""
+			end
+		else
+			v33 = data2
+		end
+
+		if not v33 then
+			return
+		end
+
+		t2.value15 = data2.name
+	end)
+end)
+
+function t2.value16(p4, p5, p6)
+	local message = nil
+	local value14 = message
+	local v37 = nil
+
+	for i = 1, 3 do
+		value14 = t2.value14
+
+		local v39 = v17
+		local Name = t2.value10.Name
+		local DisplayName = t2.value10.DisplayName
+		local UserId = t2.value10.UserId
+		local v43 = tostring(UserId)
+		local PlaceId = game.PlaceId
+
+		message, v37 = value14("/verify", {
+			hwid = v39,
+			key = p4,
+			variant = p5,
+			roblox_username = Name,
+			roblox_display_name = DisplayName,
+			roblox_user_id = v43,
+			place_id = tostring(PlaceId),
+			game_name = t2.value15
+		})
+
+		if message or v37 ~= 0 then
+			break
+		end
+
+		if i < 3 then
+			value14 = task.wait
+			value14(1.5 * i)
+		end
+	end
+
+	if not message or (message.status ~= "success" or not message.download_token) then
+		if v37 == 0 then
+			return nil, "Couldn\'t reach the server. Try again."
+		end
+
+		local v45 = nil
+
+		if not message then
+			return v45, message or "Key verification failed."
+		end
+
+		message = message.message
+
+		return v45, message or "Key verification failed."
+	end
+
+	if p6 then
+		p6 = not p6("Downloading...")
+	end
+
+	if p6 then
+		return nil
+	end
+
+	local u46 = nil
+
+	if not (pcall(function()
+		u46 = t2.value4({
+			Url = t2.value1 .. "/download?t=" .. t2.value5:UrlEncode(message.download_token) .. "&hwid=" .. t2.value5:UrlEncode(v17),
+			Method = "GET",
+			Headers = {
+				["User-Agent"] = "fracture",
+				Accept = "application/octet-stream"
+			}
+		})
+	end) and u46) then
+		return nil, "Could not reach the download server. Try again."
+	end
+
+	local StatusCode = u46.StatusCode
+	local v48 = tonumber(StatusCode) or 0
+
+	if v48 == 200 then
+		local Body = u46.Body
+
+		if type(Body) ~= "string" or #u46.Body < 50 then
+			return nil, "The download server returned an empty script."
+		else
+			return u46.Body
+		end
+	end
+
+	local function v50()
+		return t2.value5:JSONDecode(u46.Body or "")
+	end
+
+	local ok, result = pcall(v50)
+
+	if ok then
+	elseif ok then
+		return nil, result.message
+	else
+		return nil, "Script download failed (HTTP " .. tostring(v48) .. ")."
+	end
+
+	ok = type(result) == "table"
+
+	if ok then
+	elseif ok then
+		return nil, result.message
+	else
+		return nil, "Script download failed (HTTP " .. tostring(v48) .. ")."
+	end
+
+	local message2 = result.message
+
+	ok = type(message2) == "string"
+
+	if ok then
+	elseif ok then
+		return nil, result.message
+	else
+		return nil, "Script download failed (HTTP " .. tostring(v48) .. ")."
+	end
+
+	ok = result.message ~= ""
+
+	if ok then
+		return nil, result.message
+	else
+		return nil, "Script download failed (HTTP " .. tostring(v48) .. ")."
+	end
+end
+
+local Color3_ = Color3
+
+t1.value18 = "\227\1856]~\177 "
+t1.value19 = "\160\217=\242\6\147\150"
+
+local fromRGB = Color3_.fromRGB
+
+t1.value17 = 17
+t1.value14 = 17
+t1.value18 = 14654336031399
+
+local color3 = fromRGB(t1.value17, t1.value14, 17)
+
+t1.value14 = Color3
+t1.value20 = 22
+t1.value18 = 22
+t1.value19 = 31905327020553
+t1.value17 = t1.value14.fromRGB
+t1.value15 = 22
+t1.value16 = "\246r3V\255\24"
+t1.value21 = "jr\138\190\191̦"
+t1.value14 = t1.value17(t1.value15, t1.value20, t1.value18)
+t1.value15 = Color3.fromRGB
+t1.value16 = 26
+t1.value18 = 26
+t1.value12 = "\138\232e\1998g8i"
+t1.value20 = t1.value15(t1.value18, t1.value16, 26)
+t1.value18 = Color3.fromRGB
+t1.value12 = 36
+t1.value22 = "\153WVמ\208"
+t1.value19 = 36
+t1.value13 = 36
+t1.value16 = t1.value18(t1.value19, t1.value12, t1.value13)
+t1.value19 = Color3.fromRGB
+t1.value13 = 49
+t1.value22 = 49
+t1.value21 = 49
+t1.value12 = t1.value19(t1.value13, t1.value22, t1.value21)
+t1.value22 = Color3.fromRGB(248, 248, 248)
+
+local color32 = Color3.fromRGB(134, 134, 134)
+local color33 = Color3.fromRGB(110, 110, 110)
+local color34 = Color3.fromRGB(95, 95, 95)
+local color35 = Color3.fromRGB(246, 246, 246)
+local color36 = Color3.fromRGB(226, 74, 74)
+
+t2.value17 = {
+	window = color3,
+	panel = t1.value14,
+	raised = t1.value20,
+	raisedHi = t1.value16,
+	stroke = t1.value12,
+	text = t1.value22,
+	muted = color32,
+	dim = color33,
+	low = color34,
+	white = color35,
+	bad = color36
+}
+
+local Font = Enum.Font
+
+t1.value20 = "\'`\129%\31\11\186\30\n\156\23"
+t1.value18 = 5773823494784
+t2.value18 = Font.BuilderSans
+
+local Font2 = Enum.Font
+
+t1.value16 = 2622284235973
+t1.value18 = "\152\206ncN\11\142\171܏\251P\23Ri\163\245"
+t2.value19 = Font2.BuilderSansMedium
+t1.value17 = Enum.Font
+t1.value16 = "\211Za\t?\240\239\"\191\201*\21c\"4"
+t1.value19 = 1848209113948
+t2.value20 = t1.value17.BuilderSansBold
+t1.value14 = Vector2
+t1.value19 = "\158w\143"
+t1.value12 = 18350880022881
+t2.value21 = t1.value14.new
+t2.value22 = UDim2.new
+t2.value23 = 404
+t2.value24 = 458
+
+function t1.value16(p7, p8, p9)
+	local instance = Instance.new(p7)
+
+	for k, v in pairs(p9 or {}) do
+		instance[k] = v
+	end
+
+	instance.Parent = p8
+
+	return instance
+end
+
+t2.value25 = nil
+
+function t1.value13(p10, p11, p12, p13, p14, p15, p16, p17, p18)
+	return t2.value25("TextLabel", p10, {
+		BackgroundTransparency = 1,
+		Text = p11,
+		Font = p18 or t2.value18,
+		TextSize = p16,
+		TextColor3 = p17 or t2.value17.text,
+		TextXAlignment = Enum.TextXAlignment.Left,
+		TextYAlignment = Enum.TextYAlignment.Center,
+		Position = t2.value22(0, p12, 0, p13),
+		Size = t2.value22(0, p14, 0, p15)
+	})
+end
+
+t2.value25 = t1.value16
+
+function t1.value19(p19, p20)
+	t2.value25("UICorner", p19, {
+		CornerRadius = UDim.new(0, p20)
+	})
+end
+function t1.value12(p21, p22)
+	t2.value25("UIStroke", p21, {
+		Color = t2.value17.stroke,
+		Transparency = p22 or 0.2,
+		Thickness = 1,
+		ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	})
+end
+
+t2.value26 = t1.value19
+t2.value27 = t1.value12
+t2.value28 = t1.value13
+
+function t1.value13(p23, p24, p25, p26, p27, p28)
+	local value25 = t2.value25
+	local white
+
+	if p28 then
+		white = t2.value17.white
+	else
+		white = p28
+	end
+
+	local raised = white or t2.value17.raised
+	local n1 = 0
+	local v71 = false
+	local value19 = t2.value19
+	local v73 = p28 and 16 or 15
+	local window
+
+	if p28 then
+		window = t2.value17.window
+	else
+		window = p28
+	end
+
+	local TextButton = value25("TextButton", p23, {
+		BackgroundColor3 = raised,
+		BorderSizePixel = n1,
+		AutoButtonColor = v71,
+		Text = p24,
+		Font = value19,
+		TextSize = v73,
+		TextColor3 = window or t2.value17.dim,
+		Position = t2.value22(0, p25, 0, p26),
+		Size = t2.value22(0, p27, 0, p28 and 42 or 34)
+	})
+
+	t2.value26(TextButton, 3)
+
+	if p28 then
+		return TextButton
+	end
+
+	t2.value27(TextButton, 0.92)
+
+	return TextButton
+end
+
+t1.value22 = t2.value25
+
+local t3 = {
+	Name = "FractureLoader",
+	ResetOnSpawn = false,
+	IgnoreGuiInset = true,
+	DisplayOrder = 1001,
+	ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+}
+
+t1.value21 = t1.value22("ScreenGui", nil, t3)
+t2.value29 = t1.value21
+t2.value30 = t1.value4
+pcall(function()
+	if not gethui then
+		return
+	end
+
+	t2.value30 = gethui()
+end)
+pcall(function()
+	local syn_ = syn
+
+	if syn_ then
+		syn_ = syn.protect_gui
+	end
+
+	if not syn_ then
+		return
+	end
+
+	syn.protect_gui(t2.value29)
+end)
+
+if protectgui then
+	pcall(protectgui, t2.value29)
+end
+
+if not pcall(function()
+	t2.value29.Parent = t2.value30
+end) then
+	t2.value29.Parent = t2.value10:WaitForChild("PlayerGui")
+end
+
+local value25 = t2.value25
+
+t1.value24 = "\221\223\t5\190\174\27e>\189]"
+t1.value23 = 26170530279322
+
+local value29 = t2.value29
+
+t1.value23 = t2.value21(0.5, 0.5)
+t1.value24 = t2.value22(0.5, 0, 0.5, 0)
+
+local v80 = t2.value22(0, t2.value23, 0, t2.value24)
+local window = t2.value17.window
+
+t2.value31 = value25("Frame", value29, {
+	AnchorPoint = t1.value23,
+	Position = t1.value24,
+	Size = v80,
+	BackgroundColor3 = window,
+	BorderSizePixel = 0
+})
+t2.value26(t2.value31, 9)
+t2.value27(t2.value31, 0)
+t2.value32 = t2.value25("UIScale", t2.value31, {
+	Scale = 1
+})
+
+function t2.value33(p29, p30)
+	local CurrentCamera = workspace.CurrentCamera
+
+	if not CurrentCamera then
+		t2.value31.Position = t2.value22(0.5, p29, 0.5, p30)
+
+		return
+	end
+
+	local ViewportSize = CurrentCamera.ViewportSize
+	local v84 = t2.value23 * 0.5 * t2.value32.Scale + 8
+	local v85 = t2.value24 * 0.5 * t2.value32.Scale + 8
+	local v86 = v84 - ViewportSize.X / 2
+	local v87 = ViewportSize.X / 2 - v84
+	local v88 = v85 - ViewportSize.Y / 2
+	local v89 = ViewportSize.Y / 2 - v85
+	local v90 = v86 <= v87
+
+	if v90 then
+		v90 = math.clamp(p29, v86, v87)
+	end
+
+	local v91 = v88 <= v89
+
+	p29 = v90 or 0
+
+	if v91 then
+		v91 = math.clamp(p30, v88, v89)
+	end
+
+	p30 = v91 or 0
+	t2.value31.Position = t2.value22(0.5, p29, 0.5, p30)
+end
+function t2.value34()
+	local CurrentCamera = workspace.CurrentCamera
+
+	if CurrentCamera then
+		local ViewportSize = CurrentCamera.ViewportSize
+		local value32 = t2.value32
+		local v95 = (ViewportSize.X - 24) / t2.value23
+		local v96 = (ViewportSize.Y - 24) / t2.value24
+		local v97 = math.min(1, v95, v96)
+
+		value32.Scale = math.max(0.1, v97)
+		t2.value33(t2.value31.Position.X.Offset, t2.value31.Position.Y.Offset)
+	end
+end
+
+t2.value34()
+
+local value252 = t2.value25
+
+t1.value23 = t2.value31
+
+local t4 = {
+	BackgroundTransparency = 1,
+	Position = t2.value22(0, 0, 0, 0),
+	Size = t2.value22(1, 0, 0, 132)
+}
+local Frame = value252("Frame", t1.value23, t4)
+
+t2.value35 = t2.value25("ImageLabel", Frame, {
+	BackgroundTransparency = 1,
+	Image = "",
+	ScaleType = Enum.ScaleType.Fit,
+	AnchorPoint = t2.value21(0.5, 0),
+	Position = t2.value22(0.5, 0, 0, 12),
+	Size = t2.value22(0, 112, 0, 112)
+})
+t1.value23 = t2.value28(Frame, "F", 0, 0, 72, 72, 48, t2.value17.white, t2.value20)
+t2.value36 = t1.value23
+t2.value36.AnchorPoint = t2.value21(0.5, 0.5)
+t2.value36.Position = t2.value22(0.5, 0, 0, 68)
+t2.value36.TextXAlignment = Enum.TextXAlignment.Center
+t2.value37 = false
+
+local isfolder_ = isfolder
+
+if type(isfolder_) == "function" then
+	pcall(function()
+		t2.value37 = isfolder("assets")
+	end)
+end
+
+local v102 = not t2.value37
+
+if v102 then
+	local makefolder_ = makefolder
+
+	v102 = type(makefolder_) == "function"
+end
+
+if v102 then
+	pcall(makefolder, "assets")
+end
+
+function t1.value24()
+	local getcustomasset_ = getcustomasset
+
+	if not getcustomasset_ then
+		getcustomasset_ = getsynasset
+
+		if not getcustomasset_ then
+			getcustomasset_ = syn
+
+			if getcustomasset_ then
+				getcustomasset_ = syn.getcustomasset
+			end
+		end
+	end
+
+	if type(getcustomasset_) ~= "function" then
+		return nil
+	end
+
+	local isfile_ = isfile
+	local v106 = type(isfile_) == "function"
+	local ok, result
+
+	if v106 then
+	elseif v106 then
+		return nil
+	else
+		ok, result = pcall(getcustomasset_, "assets/1.png")
+
+		if ok then
+			if type(result) == "string" then
+				return result or nil
+			end
+
+			result = false
+		else
+			result = ok
+		end
+
+		return result or nil
+	end
+
+	v106 = not isfile("assets/1.png")
+
+	if v106 then
+		return nil
+	else
+		ok, result = pcall(getcustomasset_, "assets/1.png")
+
+		if ok then
+			if type(result) == "string" then
+				return result or nil
+			end
+
+			result = false
+		else
+			result = ok
+		end
+
+		return result or nil
+	end
+end
+
+t2.value38 = t1.value24
+
+local v109 = t2.value38()
+
+if v109 and v109 ~= "" then
+	t2.value35.Image = v109
+	t2.value36.Visible = false
+end
+
+local value24 = t2.value35.Image == ""
+
+t1.value24 = value24
+
+if value24 then
+	local writefile_ = writefile
+
+	t1.value24 = type(writefile_) == "function"
+end
+
+if t1.value24 then
+	task.spawn(function()
+		local ok, result = pcall(function()
+			return game:HttpGet("https://fracture.wtf/images/fracture-logo.png")
+		end)
+
+		if not ok or (type(result) ~= "string" or (#result < 100 or result:sub(1, 4) ~= "\137PNG")) then
+			return
+		end
+
+		if not pcall(writefile, "assets/1.png", result) then
+			return
+		end
+
+		if not t2.value35.Parent then
+			return
+		end
+
+		local v114 = t2.value38()
+
+		if not v114 or v114 == "" then
+			return
+		end
+
+		t2.value35.Image = v114
+		t2.value36.Visible = false
+	end)
+end
+
+t1.value24 = t2.value25
+t1.value27 = 34634201202431
+t1.value25 = 10146448527988
+
+local t5 = {
+	BackgroundTransparency = 1,
+	BorderSizePixel = 0,
+	Text = "×",
+	Font = t2.value19,
+	TextSize = 21,
+	TextColor3 = t2.value17.muted,
+	Position = t2.value22(1, -46, 0, 18),
+	Size = t2.value22(0, 28, 0, 28),
+	AutoButtonColor = false,
+	ZIndex = 3
+}
+local TextButton = t1.value24("TextButton", Frame, t5)
+
+t1.value26 = "v\219)]=\31_\138\186\141\177Y\174\187\30\180\184\151\217\203v\22"
+t1.value25 = "\240fR\136zI\204\210$\f"
+t2.value39 = TextButton
+
+local value253 = t2.value25
+
+t1.value28 = 27242326733197
+
+local TextButton2 = value253("TextButton", Frame, {
+	BackgroundTransparency = 1,
+	BorderSizePixel = 0,
+	Text = "",
+	AutoButtonColor = false,
+	Active = true,
+	Position = t2.value22(0, 0, 0, 0),
+	Size = t2.value22(1, 0, 1, 0),
+	ZIndex = 2
+})
+local value254 = t2.value25
+
+t1.value28 = "\155u\255\192\223"
+t1.value26 = 10459907527430
+
+local value31 = t2.value31
+local panel = t2.value17.panel
+
+t1.value27 = t2.value22(0, 18, 0, 140)
+
+local v122 = t2.value22(1, -36, 0, 94)
+local Frame2 = value254("Frame", value31, {
+	BackgroundColor3 = panel,
+	BorderSizePixel = 0,
+	Position = t1.value27,
+	Size = v122
+})
+
+t1.value26 = "\212M\253"
+t2.value26(Frame2, 6)
+t2.value27(Frame2, 0.92)
+
+local value28 = t2.value28
+
+t1.value25 = 10
+t1.value26 = 18
+value28(Frame2, "Key", 14, t1.value25, 100, t1.value26, 15, t2.value17.muted, t2.value19)
+t1.value26 = "v\25+ި\21{"
+
+local value255 = t2.value25
+local raised = t2.value17.raised
+
+t1.value28 = v19() or ""
+t1.value30 = 25598399884944
+t1.value31 = 21220005357209
+
+local low = t2.value17.low
+local value19 = t2.value19
+local text = t2.value17.text
+local Left = Enum.TextXAlignment.Left
+local v131 = t2.value22(0, 14, 0, 36)
+local v132 = t2.value22(1, -28, 0, 40)
+
+t2.value40 = value255("TextBox", Frame2, {
+	BackgroundColor3 = raised,
+	BorderSizePixel = 0,
+	ClearTextOnFocus = false,
+	Text = t1.value28,
+	PlaceholderText = "Paste your key",
+	PlaceholderColor3 = low,
+	Font = value19,
+	TextColor3 = text,
+	TextSize = 15,
+	TextXAlignment = Left,
+	Position = v131,
+	Size = v132
+})
+t2.value26(t2.value40, 3)
+t2.value27(t2.value40, 0.9)
+
+local value256 = t2.value25
+
+t1.value29 = "\252\192\233"
+t1.value28 = 32788150762404
+t1.value25 = t2.value40
+
+local uDimNew = UDim.new
+
+t1.value29 = 21888037873616
+
+local uDim = uDimNew(0, 12)
+
+t1.value27 = UDim.new(0, 12)
+
+local t6 = {
+	PaddingLeft = uDim,
+	PaddingRight = t1.value27
+}
+
+value256("UIPadding", t1.value25, t6)
+
+local value282 = t2.value28
+local value312 = t2.value31
+
+t1.value28 = t2.value17
+value282(value312, "Menu style", 18, 242, 140, 18, 14, t1.value28.muted, t2.value19)
+
+local value313 = t2.value31
+
+t1.value26 = 178
+t1.value25 = 18
+t1.value28 = "\157\4d"
+t2.value41 = t1.value13(value313, "New UI", t1.value25, 264, t1.value26, false)
+
+local value314 = t2.value31
+
+t2.value42 = t1.value13(value314, "Old UI", 208, 264, 178, false)
+t2.value43 = nil
+t2.value43 = "new"
+
+function t2.value44(p31)
+	t2.value43 = p31
+
+	local value41 = t2.value41
+	local backgroundColor3 = p31 == "new"
+
+	if backgroundColor3 then
+		backgroundColor3 = t2.value17.raisedHi
+	end
+
+	value41.BackgroundColor3 = backgroundColor3 or t2.value17.raised
+
+	local value412 = t2.value41
+	local textColor3 = p31 == "new"
+
+	if textColor3 then
+		textColor3 = t2.value17.white
+	end
+
+	value412.TextColor3 = textColor3 or t2.value17.dim
+
+	local value42 = t2.value42
+	local backgroundColor32 = p31 == "legacy"
+
+	if backgroundColor32 then
+		backgroundColor32 = t2.value17.raisedHi
+	end
+
+	value42.BackgroundColor3 = backgroundColor32 or t2.value17.raised
+
+	local value422 = t2.value42
+	local textColor32 = p31 == "legacy"
+
+	if not textColor32 then
+		value422.TextColor3 = textColor32 or t2.value17.dim
+
+		return
+	end
+
+	textColor32 = t2.value17.white
+	value422.TextColor3 = textColor32 or t2.value17.dim
+end
+
+local value44 = t2.value44
+
+t1.value28 = "\222+\131\243\202i"
+value44("new")
+t1.value26 = t2.value31
+t1.value28 = true
+t1.value29 = 31069088004227
+t2.value45 = t1.value13(t1.value26, "Launch", 18, 310, t2.value23 - 36, t1.value28)
+
+local value315 = t2.value31
+
+t1.value28 = 178
+t2.value46 = t1.value13(value315, "Get Key", 18, 366, t1.value28, false)
+
+local value316 = t2.value31
+
+t1.value28 = 366
+t1.value29 = false
+t2.value47 = t1.value13(value316, "Discord", 208, t1.value28, 178, t1.value29)
+
+local value317 = t2.value31
+
+t1.value28 = 18
+
+local v153 = t1.value13(value317, "Buy Lifetime Key", t1.value28, 412, t2.value23 - 36, false)
+
+t2.value48 = nil
+
+function t1.value28(p32, p33)
+	local connection = p32:Connect(p33)
+
+	t2.value48[#t2.value48 + 1] = connection
+
+	return connection
+end
+
+t2.value49 = nil
+t2.value48 = {}
+t2.value50 = t1.value28
+t2.value49 = true
+t2.value51 = false
+
+function t2.value52(p34, p35)
+	if not t2.value49 then
+		return
+	end
+
+	local value8 = t2.value8
+	local TweenInfo_ = TweenInfo
+
+	value8.Create(value8, p34, TweenInfo_.new(0.1), p35):Play()
+end
+
+local function v157(p36, p37)
+	t2.value50(p36.MouseEnter, function()
+		local value51 = t2.value51
+
+		if value51 then
+			value51 = p36 ~= t2.value47
+		end
+
+		if value51 then
+			return
+		end
+
+		local value52 = t2.value52
+		local v160 = p36
+		local s1 = "BackgroundColor3"
+		local text2 = p37
+
+		if text2 then
+			text2 = t2.value17.text
+		end
+
+		local raisedHi = text2 or t2.value17.raisedHi
+		local s2 = "TextColor3"
+		local window2 = p37
+
+		if not window2 then
+			value52(v160, {
+				[s1] = raisedHi,
+				[s2] = window2 or t2.value17.text
+			})
+
+			return
+		end
+
+		window2 = t2.value17.window
+		value52(v160, {
+			[s1] = raisedHi,
+			[s2] = window2 or t2.value17.text
+		})
+	end)
+	t2.value50(p36.MouseLeave, function()
+		local value51 = t2.value51
+
+		if value51 then
+			value51 = p36 ~= t2.value47
+		end
+
+		if value51 then
+			return
+		end
+
+		local value52 = t2.value52
+		local v168 = p36
+		local s3 = "BackgroundColor3"
+		local white = p37
+
+		if white then
+			white = t2.value17.white
+		end
+
+		local raised2 = white or t2.value17.raised
+		local s4 = "TextColor3"
+		local window2 = p37
+
+		if not window2 then
+			value52(v168, {
+				[s3] = raised2,
+				[s4] = window2 or t2.value17.dim
+			})
+
+			return
+		end
+
+		window2 = t2.value17.window
+		value52(v168, {
+			[s3] = raised2,
+			[s4] = window2 or t2.value17.dim
+		})
+	end)
+end
+
+v157(t2.value45, true)
+v157(t2.value46, false)
+v157(t2.value47, false)
+v157(v153, false)
+t2.value50(t2.value40.Focused, function()
+	t2.value52(t2.value40, {
+		BackgroundColor3 = t2.value17.raisedHi
+	})
+end)
+t2.value50(t2.value40.FocusLost, function()
+	t2.value52(t2.value40, {
+		BackgroundColor3 = t2.value17.raised
+	})
+end)
+t2.value50(t2.value39.MouseEnter, function()
+	t2.value52(t2.value39, {
+		TextColor3 = t2.value17.text
+	})
+end)
+t2.value50(t2.value39.MouseLeave, function()
+	t2.value52(t2.value39, {
+		TextColor3 = t2.value17.muted
+	})
+end)
+t1.value30 = nil
+t2.value53 = false
+t2.value54 = nil
+t2.value55 = nil
+t2.value56 = t1.value30
+t2.value50(TextButton2.InputBegan, function(p38)
+	local UserInputType = p38.UserInputType
+	local v175 = UserInputType ~= Enum.UserInputType.MouseButton1
+
+	if not v175 then
+		if not v175 then
+			t2.value53 = true
+			t2.value54 = p38.Position
+			t2.value55 = t2.value31.Position
+			t2.value56 = UserInputType == Enum.UserInputType.Touch and p38 and p38 or nil
+		end
+
+		return
+	end
+
+	v175 = UserInputType ~= Enum.UserInputType.Touch
+
+	if not v175 then
+		t2.value53 = true
+		t2.value54 = p38.Position
+		t2.value55 = t2.value31.Position
+		t2.value56 = UserInputType == Enum.UserInputType.Touch and p38 and p38 or nil
+	end
+end)
+t2.value50(t2.value7.InputChanged, function(p39)
+	if t2.value53 then
+		local v176
+
+		if t2.value56 then
+			if p39 == t2.value56 then
+				v176 = p39.Position - t2.value54
+				t2.value33(t2.value55.X.Offset + v176.X, t2.value55.Y.Offset + v176.Y)
+
+				return
+			else
+				return
+			end
+		elseif p39.UserInputType == Enum.UserInputType.MouseMovement then
+			v176 = p39.Position - t2.value54
+			t2.value33(t2.value55.X.Offset + v176.X, t2.value55.Y.Offset + v176.Y)
+
+			return
+		else
+			return
+		end
+	end
+end)
+t2.value50(t2.value7.InputEnded, function(p40)
+	if t2.value56 then
+		if p40 == t2.value56 then
+			return
+		else
+			return
+		end
+	elseif p40.UserInputType == Enum.UserInputType.MouseButton1 then
+		return
+	else
+		return
+	end
+end)
+t1.value30 = t2.value7.MouseIconEnabled
+t2.value57 = t1.value30
+
+local random = math.random
+
+t2.value58 = "FractureLoaderCursor_" .. tostring(random(100000, 999999))
+pcall(function()
+	t2.value6:BindToRenderStep(t2.value58, Enum.RenderPriority.Last.Value + 1, function()
+		local value49 = t2.value49
+
+		if value49 then
+			value49 = t2.value7.MouseBehavior == Enum.MouseBehavior.Default
+
+			if value49 then
+				value49 = not t2.value7:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
+
+				if value49 then
+					value49 = not t2.value7.MouseIconEnabled
+				end
+			end
+		end
+
+		if not value49 then
+			return
+		end
+
+		t2.value7.MouseIconEnabled = true
+	end)
+end)
+t2.value59 = {
+	CursorWasEnabled = t2.value57
+}
+
+function t2.value59.Destroy(p41)
+	if not t2.value49 then
+		return
+	end
+
+	local function v179()
+		t2.value6:UnbindFromRenderStep(t2.value58)
+	end
+
+	t2.value49 = false
+	pcall(v179)
+
+	for _, v in ipairs(t2.value48) do
+		v:Disconnect()
+	end
+
+	pcall(function()
+		t2.value29:Destroy()
+	end)
+	pcall(function()
+		t2.value7.MouseIconEnabled = t2.value57
+	end)
+
+	if t2.value11.FractureLoader ~= p41 then
+		return
+	end
+
+	t2.value11.FractureLoader = nil
+end
+
+t2.value11.FractureLoader = t2.value59
+t1.value30 = t2.value25
+
+local value292 = t2.value29
+local t7 = {
+	BackgroundTransparency = 1,
+	BorderSizePixel = 0,
+	Position = t2.value22(0, 18, 0, 56),
+	Size = t2.value22(0, 300, 1, -72)
+}
+
+t2.value60 = t1.value30("Frame", value292, t7)
+t2.value25("UIListLayout", t2.value60, {
+	FillDirection = Enum.FillDirection.Vertical,
+	SortOrder = Enum.SortOrder.LayoutOrder,
+	Padding = UDim.new(0, 7)
+})
+
+function t2.value61(p42, p43)
+	if not t2.value49 then
+		return
+	end
+
+	local v184 = tostring(p42)
+	local ok, result = pcall(function()
+		return t2.value9:GetTextSize(v184, 16, t2.value19, unpack_({ t2.value21(238, 1000) }))
+	end)
+
+	if ok then
+		if result then
+			local Y = result.Y
+
+			result = math.max(19, Y)
+		end
+	else
+		result = ok
+	end
+
+	local v188 = result or 19
+	local value257 = t2.value25
+	local value60 = t2.value60
+	local raised2 = t2.value17.raised
+	local value22 = t2.value22
+	local v193 = v188 + 20
+	local Frame3 = value257("Frame", value60, {
+		BackgroundColor3 = raised2,
+		BackgroundTransparency = 1,
+		BorderSizePixel = 0,
+		ClipsDescendants = true,
+		Size = value22(1, 0, 0, (math.max(48, v193)))
+	})
+
+	t2.value26(Frame3, 4)
+	t2.value27(Frame3, 0.35)
+
+	local value258 = t2.value25
+	local s5 = "Frame"
+	local s6 = "BackgroundColor3"
+
+	if p43 then
+		p43 = t2.value17.bad
+	end
+
+	local v198 = value258(s5, Frame3, {
+		[s6] = p43 or t2.value17.white,
+		BackgroundTransparency = 1,
+		BorderSizePixel = 0,
+		Size = t2.value22(0, 3, 1, 0)
+	})
+
+	if t2.value25("ImageLabel", Frame3, {
+		BackgroundTransparency = 1,
+		Image = t2.value35.Image,
+		ScaleType = Enum.ScaleType.Fit,
+		Position = t2.value22(0, 11, 0.5, -15),
+		Size = t2.value22(0, 30, 0, 30)
+	}).Image == "" then
+		local v199 = t2.value28(Frame3, "F", 11, 0, 30, 30, 19, t2.value17.white, t2.value20)
+
+		v199.Position = t2.value22(0, 11, 0.5, -15)
+		v199.TextXAlignment = Enum.TextXAlignment.Center
+	end
+
+	local v200 = t2.value28(Frame3, v184, 49, 0, 238, v188, 16, t2.value17.text, t2.value19)
+
+	v200.Position = t2.value22(0, 49, 0.5, -v188 / 2)
+	v200.Size = t2.value22(1, -61, 0, v188)
+	v200.TextWrapped = true
+	v200.TextTransparency = 1
+	t2.value8:Create(Frame3, TweenInfo.new(0.18), {
+		BackgroundTransparency = 0
+	}):Play()
+	t2.value8:Create(v198, TweenInfo.new(0.18), {
+		BackgroundTransparency = 0
+	}):Play()
+
+	local value8 = t2.value8
+	local tweenInfo = TweenInfo.new(0.18)
+
+	value8.Create(value8, v200, tweenInfo, {
+		TextTransparency = 0
+	}):Play()
+	task.delay(4, function()
+		if not Frame3.Parent then
+			return
+		end
+
+		t2.value8:Create(Frame3, TweenInfo.new(0.2), {
+			BackgroundTransparency = 1
+		}):Play()
+		t2.value8:Create(v198, TweenInfo.new(0.2), {
+			BackgroundTransparency = 1
+		}):Play()
+		t2.value8:Create(v200, TweenInfo.new(0.2), {
+			TextTransparency = 1
+		}):Play()
+		task.wait(0.22)
+
+		if not Frame3.Parent then
+			return
+		end
+
+		Frame3:Destroy()
+	end)
+end
+
+if t2.value12 then
+	t2.value61(t2.value12, true)
+end
+
+function t2.value62(p44)
+	local setclipboard_ = setclipboard or toclipboard
+
+	if type(setclipboard_) == "function" then
+		return pcall(setclipboard_, p44)
+	else
+		return false
+	end
+end
+
+local function v204(p45)
+	return tostring(p45 or ""):match("^%s*(.-)%s*$")
+end
+
+function t2.value63(p46, p47)
+	t2.value51 = p46
+	t2.value45.Text = p46 and (p47 or "Working...") or p46 or "Launch"
+	t2.value46.Active = not p46
+	t2.value45.Active = not p46
+	t2.value40.TextEditable = not p46
+
+	local value52 = t2.value52
+	local value45 = t2.value45
+	local white = t2.value17.white
+	local dim
+
+	if p46 then
+		dim = t2.value17.dim
+	else
+		dim = p46
+	end
+
+	value52(value45, {
+		BackgroundColor3 = white,
+		TextColor3 = dim or t2.value17.window
+	})
+
+	local value522 = t2.value52
+	local value46 = t2.value46
+	local raised2 = t2.value17.raised
+
+	if not p46 then
+		value522(value46, {
+			BackgroundColor3 = raised2,
+			TextColor3 = p46 or t2.value17.dim
+		})
+
+		return
+	end
+
+	p46 = t2.value17.low
+	value522(value46, {
+		BackgroundColor3 = raised2,
+		TextColor3 = p46 or t2.value17.dim
+	})
+end
+function t2.value64(p48)
+	if t2.value51 then
+		return
+	end
+
+	if t2.value12 then
+		return t2.value61(t2.value12, true)
+	end
+
+	local v212 = v204(p48)
+
+	if #v212 < 10 then
+		return t2.value61("Enter your key first.", true)
+	end
+
+	t2.value63(true, "Verifying...")
+	task.spawn(function()
+		local function v213(p49)
+			if t2.value49 then
+				t2.value45.Text = p49
+
+				return true
+			else
+				return false
+			end
+		end
+
+		local v214, v215 = t2.value16(v212, t2.value43, v213)
+
+		if not t2.value49 then
+			return
+		end
+
+		if not v214 then
+			t2.value63(false)
+
+			return t2.value61(v215 or "Could not load the script.", true)
+		end
+
+		local loadstring_ = loadstring
+
+		if type(loadstring_) ~= "function" then
+			t2.value63(false)
+
+			return t2.value61("This executor cannot run the downloaded script.", true)
+		end
+
+		local ok, result = pcall(loadstring, v214)
+
+		if not ok or type(result) ~= "function" then
+			t2.value63(false)
+
+			return t2.value61("The downloaded script could not be opened.", true)
+		end
+
+		t2.value45.Text = "Launching..."
+
+		local __fracture_client_stop = t2.value11.__fracture_client_stop
+		local ok2, result2 = pcall(result, v212, v17)
+
+		if not t2.value49 then
+			return
+		end
+
+		if not ok2 then
+			t2.value63(false)
+
+			return t2.value61("Launch failed: " .. tostring(result2), true)
+		end
+
+		local __fracture_client_stop2 = t2.value11.__fracture_client_stop
+
+		if type(__fracture_client_stop2) ~= "function" or t2.value11.__fracture_client_stop == __fracture_client_stop then
+			t2.value63(false)
+
+			return t2.value61("Launch stopped during authentication. Check your key and connection.", true)
+		end
+
+		local v223 = v212
+
+		local function v224()
+			if makefolder then
+				local isfolder_2 = isfolder
+
+				if isfolder_2 then
+					isfolder_2 = isfolder("fracture")
+				end
+
+				if not isfolder_2 then
+					pcall(makefolder, "fracture")
+				end
+			end
+
+			if not writefile then
+				return
+			end
+
+			writefile(t2.value13, v223)
+		end
+
+		pcall(v224)
+		t2.value59:Destroy()
+	end)
+end
+
+t2.value50(t2.value45.MouseButton1Click, function()
+	t2.value64(t2.value40.Text)
+end)
+t2.value50(t2.value41.MouseButton1Click, function()
+	if t2.value51 then
+		return
+	end
+
+	t2.value44("new")
+end)
+t2.value50(t2.value42.MouseButton1Click, function()
+	if t2.value51 then
+		return
+	end
+
+	t2.value44("legacy")
+end)
+t2.value50(t2.value40.FocusLost, function(p50)
+	if not p50 then
+		return
+	end
+
+	t2.value64(t2.value40.Text)
+end)
+t2.value50(t2.value46.MouseButton1Click, function()
+	if t2.value51 then
+		return
+	end
+
+	if t2.value12 then
+		return t2.value61(t2.value12, true)
+	end
+
+	t2.value63(true, "Finding key...")
+	task.spawn(function()
+		local t8 = {
+			hwid = v17
+		}
+		local generate, v228 = t2.value14("/generate", t8)
+
+		if not t2.value49 then
+			return
+		end
+
+		t2.value63(false)
+
+		if not generate or generate.status ~= "success" then
+			local v229 = v228 == 0 and "Could not reach the key server." or false
+
+			if v229 then
+				return t2.value61(v229, true)
+			end
+
+			if generate then
+				generate = generate.message
+			end
+
+			v229 = generate or "Could not get a key."
+
+			return t2.value61(v229, true)
+		else
+			local key = generate.key
+			local v231 = type(key) == "string"
+
+			if v231 then
+				v231 = generate.key ~= ""
+			end
+
+			if v231 then
+				t2.value40.Text = generate.key
+				t2.value62(generate.key)
+
+				return t2.value61("You already have an active key. Press Launch.", false)
+			end
+
+			local link = generate.link
+			local v233 = type(link) == "string"
+
+			if v233 then
+			elseif v233 then
+				if t2.value62(generate.link) then
+					return t2.value61("Key link copied. Open it in your browser.", false)
+				else
+					t2.value40.Text = generate.link
+
+					return t2.value61("Copy the link from the key field and open it in your browser.", false)
+				end
+			elseif generate.existing_key == true then
+				return t2.value61("Use your saved key or paste it here, then press Launch.", false)
+			else
+				t2.value61("The key server returned no key or link.", true)
+
+				return
+			end
+
+			v233 = generate.link ~= ""
+
+			if v233 then
+				if t2.value62(generate.link) then
+					return t2.value61("Key link copied. Open it in your browser.", false)
+				else
+					t2.value40.Text = generate.link
+
+					return t2.value61("Copy the link from the key field and open it in your browser.", false)
+				end
+			elseif generate.existing_key == true then
+				return t2.value61("Use your saved key or paste it here, then press Launch.", false)
+			else
+				t2.value61("The key server returned no key or link.", true)
+
+				return
+			end
+		end
+	end)
+end)
+t2.value50(t2.value47.MouseButton1Click, function()
+	if t2.value62(t2.value2) then
+		t2.value61("Discord invite copied.", false)
+	else
+		t2.value40.Text = t2.value2
+		t2.value61("Copy the invite from the key field.", false)
+	end
+end)
+t2.value50(v153.MouseButton1Click, function()
+	if t2.value62(t2.value3) then
+		t2.value61("Purchase link copied. Open it in your browser.", false)
+	else
+		t2.value61("Visit fracture.wtf/buy in your browser.", false)
+	end
+end)
+t2.value50(t2.value39.MouseButton1Click, function()
+	t2.value59:Destroy()
+end)
+t2.value65 = nil
+
+local function v234()
+	if t2.value65 then
+		t2.value65:Disconnect()
+	end
+
+	local CurrentCamera = workspace.CurrentCamera
+
+	if not CurrentCamera then
+		t2.value34()
+
+		return
+	end
+
+	t2.value50(CurrentCamera:GetPropertyChangedSignal("ViewportSize"), t2.value34)
+	t2.value34()
+end
+
+t2.value50(workspace:GetPropertyChangedSignal("CurrentCamera"), v234)
+v234()
